@@ -1,0 +1,290 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #e91e63;
+  --primary-dark: #c2185b;
+  --secondary-bg: #fff5f8;
+  --bg: #f7f7fb;
+  --text: #222;
+  --muted: #666;
+  --border: #e6e6e6;
+  --shadow: 0 10px 30px rgba(233, 30, 99, 0.08);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  margin: 0;
+  padding: 14px;
+  color: var(--text);
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  margin: 0;
+  color: var(--primary);
+  font-size: 28px;
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.hidden {
+  display: none;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 0 0 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid rgba(233, 30, 99, 0.15);
+  border-color: var(--primary);
+}
+
+button {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 10px;
+  background: linear-gradient(45deg, var(--primary), #ff4081);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover {
+  filter: brightness(1.03);
+}
+
+button.secondary {
+  background: var(--secondary-bg);
+  color: var(--primary-dark);
+  border: 1px solid rgba(233, 30, 99, 0.18);
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.grid-two.compact p {
+  margin: 6px 0;
+}
+
+.services-header {
+  margin-top: 8px;
+}
+
+.services-header h2,
+#shareSection h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+}
+
+.help-text {
+  color: var(--muted);
+  margin-top: 0;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+th {
+  background: #fafafa;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 10px;
+  text-align: center;
+}
+
+td input {
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+}
+
+td button {
+  width: 44px;
+  height: 38px;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#invoice {
+  margin-top: 20px;
+}
+
+.invoice-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.invoice-toolbar button {
+  max-width: 180px;
+  margin-top: 0;
+}
+
+.branding {
+  text-align: center;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 8px;
+  object-fit: contain;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.summary {
+  margin-top: 14px;
+  text-align: right;
+}
+
+.summary p,
+.summary h3 {
+  margin: 6px 0;
+}
+
+.total {
+  color: var(--primary);
+}
+
+.thank {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.notes-line {
+  margin: 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px dashed #bbb;
+  margin: 12px 0;
+}
+
+.viewer-mode #editorSection,
+.viewer-mode #shareSection,
+.viewer-mode .app-header .subtitle {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .grid-two,
+  .btn-grid,
+  .btn-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  .container > *:not(#invoice) {
+    display: none !important;
+  }
+
+  #invoice {
+    display: block !important;
+    margin: 0 auto;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    page-break-inside: avoid;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  #invoice * {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}

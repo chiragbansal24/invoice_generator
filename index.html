@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RB Makeup Studio Invoice</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="app-header">
+      <h1 class="title">RB Makeup Studio &amp; Unisex Salon</h1>
+      <p class="subtitle">Create, share, and download customer invoices</p>
+    </header>
+
+    <section id="editorSection" class="card">
+      <div class="grid-two">
+        <div>
+          <label for="customer">Customer Name</label>
+          <input id="customer" placeholder="Customer Name" autocomplete="name" />
+        </div>
+        <div>
+          <label for="phone">Phone Number</label>
+          <input id="phone" placeholder="Phone Number" type="tel" inputmode="numeric" autocomplete="tel" />
+        </div>
+      </div>
+
+      <div class="grid-two">
+        <div>
+          <label for="discount">Discount (₹)</label>
+          <input id="discount" placeholder="Discount (optional)" type="number" min="0" step="0.01" value="0" />
+        </div>
+        <div>
+          <label for="notes">Notes</label>
+          <input id="notes" placeholder="Optional notes (bridal package, etc.)" />
+        </div>
+      </div>
+
+      <div class="services-header">
+        <h2>Add Services</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table id="serviceTable">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Price (₹)</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="btn-grid">
+        <button type="button" class="secondary" onclick="addRow()">+ Add Service</button>
+        <button type="button" onclick="generateInvoice()">Generate Invoice</button>
+      </div>
+    </section>
+
+    <section id="shareSection" class="card hidden">
+      <h2>Customer Link</h2>
+      <p class="help-text">
+        Share this link so the customer can view or download the invoice without an attachment.
+      </p>
+      <textarea id="shareLinkOutput" readonly></textarea>
+
+      <div class="btn-grid btn-grid-3">
+        <button type="button" class="secondary" onclick="copyShareLink()">Copy Link</button>
+        <button type="button" class="secondary" onclick="openShareLink()">Open View</button>
+        <button type="button" onclick="sendWhatsApp()">Send on WhatsApp</button>
+      </div>
+    </section>
+
+    <section id="invoice" class="card hidden">
+      <div class="invoice-toolbar no-print">
+        <button type="button" class="secondary" onclick="downloadPDF()">Download / Print</button>
+      </div>
+
+      <div class="branding">
+        logo.png
+        <h2>RB Makeup Studio &amp; Unisex Salon</h2>
+        <p>Phone: 8882713130</p>
+        <p>Location: Gurgaon</p>
+        <p>Bridal | Party Makeup | Hair Styling</p>
+        <p>
+          <a href="https://www.instagram.com/rb__makeupstudio" target="_blank" rel="noopener noreferrer">
+            @rb__makeupstudio
+          </a>
+        </p>
+      </div>
+
+      <hr />
+
+      <div class="invoice-meta grid-two compact">
+        <p><strong>Date:</strong> <span id="i_date"></span></p>
+        <p><strong>Customer:</strong> <span id="i_customer"></span></p>
+        <p><strong>Phone:</strong> <span id="i_phone"></span></p>
+      </div>
+
+      <p id="i_notes_wrap" class="notes-line hidden">
+        <strong>Notes:</strong> <span id="i_notes"></span>
+      </p>
+
+      <hr />
+
+      <div class="table-wrap">
+        <table id="invoiceTable">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="summary">
+        <p><strong>Subtotal:</strong> ₹ <span id="i_subtotal">0</span></p>
+        <p><strong>Discount:</strong> ₹ <span id="i_discount">0</span></p>
+        <h3 class="total">Total: ₹ <span id="i_total">0</span></h3>
+      </div>
+
+      <p class="thank">
+        Thank you for choosing RB Makeup Studio — we look forward to serving you again.
+      </p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
