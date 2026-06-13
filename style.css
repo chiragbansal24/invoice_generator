@@ -112,14 +112,17 @@ button.secondary {
   border: 1px solid rgba(233, 30, 99, 0.18);
 }
 
+.small-btn {
+  width: 44px;
+  height: 38px;
+  padding: 0;
+  margin: 0;
+}
+
 .grid-two {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-}
-
-.grid-two.compact p {
-  margin: 6px 0;
 }
 
 .services-header {
@@ -164,13 +167,6 @@ td input {
   margin: 0;
 }
 
-td button {
-  width: 44px;
-  height: 38px;
-  padding: 0;
-  margin: 0;
-}
-
 .btn-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -201,14 +197,21 @@ td button {
 }
 
 .logo {
-  width: 120px;
-  margin-bottom: 8px;
+  width: 140px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
   object-fit: contain;
 }
 
 a {
   text-decoration: none;
   color: var(--primary);
+}
+
+.invoice-meta-single p {
+  margin: 6px 0;
 }
 
 .summary {
