@@ -1,9 +1,11 @@
 const BUSINESS = {
   name: "RB Makeup Studio & Unisex Salon",
   phone: "8882713130",
-  location: "Gurgaon",
+  location: "C-23 Ramprastha Chander Nagar near DAV School Ghaziabad - 201011",
+  services: "Makeup | Hair | Nails | Beauty",
   instagramHandle: "@rb__makeupstudio",
-  instagramUrl: "https://www.instagram.com/rb__makeupstudio"
+  instagramUrl: "https://www.instagram.com/rb__makeupstudio",
+  reviewUrl: "https://g.page/r/CWPCLW0ZCxh3EBM/review"
 };
 
 let latestShareLink = "";
@@ -20,7 +22,7 @@ function addRow(service = "", price = "") {
   row.innerHTML = `
     <td><input placeholder="Service" value="${escapeHtml(service)}"></td>
     <td><input type="number" min="0" step="0.01" placeholder="Price" value="${escapeHtml(price)}"></td>
-    <td><button type="button" class="secondary" onclick="removeRow(this)">×</button></td>
+    <td><button type="button" class="secondary small-btn" onclick="removeRow(this)">×</button></td>
   `;
 }
 
@@ -245,7 +247,7 @@ function sendWhatsApp() {
 
   const message = `Hi ${data.customer}
 
-Thank you for choosing ${BUSINESS.name}
+Thank you for visiting ${BUSINESS.name}
 
 Your invoice is ready.
 View or download it here:
@@ -253,11 +255,14 @@ ${latestShareLink}
 
 Total: ₹${formatMoney(data.total)}
 
-Follow us on Instagram:
+If you have a moment, please share your feedback on Google:
+${BUSINESS.reviewUrl}
+
+Instagram:
 ${BUSINESS.instagramUrl}
 
-We look forward to serving you again.
-Phone: ${BUSINESS.phone}`;
+Phone: ${BUSINESS.phone}
+Address: ${BUSINESS.location}`;
 
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
